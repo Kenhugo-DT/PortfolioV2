@@ -1,0 +1,93 @@
+/* ================================================================
+   ABOUT SIDE ICONS
+   Quiet skill marks at the edges of the About panel.
+   ================================================================ */
+
+.panel-about .center-panel {
+  position: relative;
+}
+
+.toolkit-side {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  gap: clamp(0.72rem, 1.2vw, 1rem);
+  transform: translateY(-50%);
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.toolkit-side-left {
+  left: clamp(-10rem, -8vw, -6.6rem);
+}
+
+.toolkit-side-right {
+  right: clamp(-10rem, -8vw, -6.6rem);
+}
+
+.toolkit-icon {
+  width: clamp(3rem, 4.8vw, 4.15rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(244,239,228,0.14);
+  border-radius: 9px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(255,255,255,0.16), transparent 72%),
+    rgba(8,12,16,0.52);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+}
+
+.toolkit-icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  filter: brightness(1.18) saturate(1.08) drop-shadow(0 7px 10px rgba(0,0,0,0.32));
+}
+
+.toolkit-side-left .toolkit-icon:nth-child(2n) {
+  transform: translateX(1.05rem);
+}
+
+.toolkit-side-right .toolkit-icon:nth-child(2n) {
+  transform: translateX(-1.05rem);
+}
+
+.toolkit-side-left .toolkit-icon {
+  border-color: rgba(57,245,255,0.2);
+}
+
+.toolkit-side-right .toolkit-icon {
+  border-color: rgba(255,176,0,0.18);
+}
+
+@media (max-width: 1200px) {
+  .toolkit-side {
+    top: auto;
+    bottom: clamp(4.2rem, 9vh, 6rem);
+    display: flex;
+    transform: none;
+    opacity: 0.48;
+  }
+
+  .toolkit-side-left {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .toolkit-side-right {
+    display: none;
+  }
+
+  .toolkit-side-left .toolkit-icon:nth-child(2n) {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .toolkit-side {
+    display: none;
+  }
+}

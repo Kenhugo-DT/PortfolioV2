@@ -1,0 +1,70 @@
+/* ================================================================
+   EMBED SHOWCASE
+   Playable external project previews, such as GitHub Pages games.
+   ================================================================ */
+
+.showcase-details.has-embed-showcase {
+  align-items: center;
+  justify-content: stretch;
+  padding: clamp(1rem, 1.45vw, 1.35rem);
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.showcase-details.has-embed-showcase::after {
+  display: none !important;
+}
+
+.showcase-embed-preview {
+  width: calc(100% - clamp(1.5rem, 3vw, 3rem));
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.showcase-embed-frame {
+  width: min(100%, 62rem);
+  max-width: 100%;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(57,245,255,0.08), transparent 24rem),
+    rgba(3,5,8,0.92);
+  border: 1px solid rgba(57,245,255,0.24);
+  box-shadow:
+    0 18px 44px rgba(0,0,0,0.38),
+    inset 0 0 0 1px rgba(244,239,228,0.04);
+  box-sizing: border-box;
+}
+
+.showcase-embed-frame iframe {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  background: #020408;
+}
+
+.showcase-embed-copy {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.showcase-embed-copy .showcase-project-title,
+.showcase-embed-copy .showcase-project-subtitle {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .showcase-embed-preview {
+    width: 100%;
+  }
+}

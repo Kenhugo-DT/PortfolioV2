@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Ken</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/gallery-showcase.js" defer></script>
+  <script src="js/swipe-layout.js" defer></script>
+  <script src="js/music-player.js" defer></script>
+  <script src="js/epic-interactions.js" defer></script>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/panels.css" />
+  <link rel="stylesheet" href="css/showcase-youtube.css" />
+  <link rel="stylesheet" href="css/showcase-image.css" />
+  <link rel="stylesheet" href="css/showcase-embed.css" />
+  <link rel="stylesheet" href="css/gallery-showcase.css" />
+  <link rel="stylesheet" href="css/audio-player.css" />
+  <link rel="stylesheet" href="css/toolkit.css" />
+  <link rel="stylesheet" href="css/portfolio-theme.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/landing-teasers.css" />
+  <link rel="stylesheet" href="css/layout-map.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+</head>
+<body>
+
+  <header id="header">
+    <h1>Have you met Ken?</h1>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="portfolio-shell" aria-label="Swipe portfolio panels">
+    <div class="panel-track">
+      
+      <!-- COLUMN -1: WEBDEV -->
+      <div class="panel-column" data-x="-1">
+        <section class="portfolio-panel panel-left" data-x="-1" data-y="0" data-site="webdev" aria-labelledby="panel-webdev-title">
+          <div class="panel-inner panel-layout-webdev">
+            <aside class="panel-side project-wheel" aria-label="Web development project wheel">
+              <div class="wheel-label">Projects</div>
+              <div class="wheel-items" data-wheel="webdev"></div>
+            </aside>
+            <div class="panel-main">
+              <header class="panel-page-header">
+                <span class="page-flag">web development / webdev projects</span>
+                <h2 id="panel-webdev-title" class="panel-page-title">Web development that ships</h2>
+              </header>
+              <div class="panel-content">
+                <section class="showcase-area" aria-label="Selected project showcase">
+                  <div class="showcase-details">
+                    <h3 class="showcase-project-title">Guitar website</h3>
+                    <p class="showcase-project-subtitle">Interactive landing page / music portfolio</p>
+                  </div>
+                  <div class="showcase-links"></div>
+                </section>
+                <section class="project-description" aria-label="Project description">
+                  <div class="project-description-box">
+                    <h3 class="project-description-title">Project overview</h3>
+                    <p class="project-description-text">Select a project in the wheel to preview it here.</p>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- COLUMN 0: HOME & ABOUT -->
+      <div class="panel-column" data-x="0">
+        <section class="portfolio-panel panel-center" data-x="0" data-y="0" data-site="home" aria-labelledby="panel-home-title">
+          
+          <!-- NAVIGATION FLAGS (BETA) -->
+          <button class="nav-flag flag-left" data-target="left" aria-label="Go to Web Development projects"><span>WebDev</span></button>
+          <button class="nav-flag flag-right" data-target="right" aria-label="Go to Creative projects"><span>Creativity</span></button>
+          <button class="nav-flag flag-bottom" data-target="bottom" aria-label="Go to About section"><span>About</span></button>
+
+          <div class="landing-teasers" aria-hidden="true">
+            <div class="landing-teaser landing-teaser-webdev">
+              <div class="dev-window">
+                <span></span>
+                <span></span>
+                <span></span>
+                <code>&lt;section&gt;</code>
+                <code>const idea = build();</code>
+                <code>deploy(portfolio);</code>
+              </div>
+              <div class="dev-grid">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="dev-orbit">
+                <span>&lt;/&gt;</span>
+                <span>{ }</span>
+                <span>01</span>
+              </div>
+            </div>
+
+            <div class="landing-teaser landing-teaser-creative">
+              <div class="paint-orbit">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="brush-strokes">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="creative-frames">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-inner center-panel">
+            <div class="center-copy">
+              <span class="page-flag">home / landing page</span>
+              <h2 id="panel-home-title">Meet Ken - maker, creator, coder</h2>
+              <p>Ken is a creative problem solver from Troms, Norway. He builds websites, designs visual concepts, and blends craftsmanship with digital experience.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ABOUT PANEL (Below Home) -->
+        <section class="portfolio-panel panel-about" data-x="0" data-y="1" data-site="about" aria-labelledby="about-title">
+          <div class="panel-inner center-panel">
+            <section class="about-intro" aria-labelledby="about-title">
+              <figure class="about-photo">
+                <img src="assets/images/about/Ken.png" alt="Ken on a snowmobile in Troms">
+              </figure>
+              <div class="about-copy">
+                <span class="page-flag">about / introduction</span>
+                <h3 id="about-title">Have you met Ken?</h3>
+                <p>Ken is the name of this creative and problem-solving handyman from Troms, Norway.</p>
+                <p>He loves challenging his creativity, whether through web development, 3D modeling, playing musical instruments, or repairing and detailing cars.</p>
+                <p>With a background in carpentry, music, photography/editing, and web development, it's safe to say that he enjoys keeping his brain active by tackling tasks where he can solve problems and be creative at the same time.</p>
+              </div>
+            </section>
+
+            <div class="toolkit-side toolkit-side-left" aria-label="Known web development tools">
+              <span class="toolkit-icon"><img src="assets/icons/html-icon.svg" alt="HTML"></span>
+              <span class="toolkit-icon"><img src="assets/icons/css-icon.svg" alt="CSS"></span>
+              <span class="toolkit-icon"><img src="assets/icons/javascript-programming-language-icon.svg" alt="JavaScript"></span>
+              <span class="toolkit-icon"><img src="assets/icons/react-js-icon.svg" alt="React"></span>
+              <span class="toolkit-icon"><img src="assets/icons/tailwind-css-icon.svg" alt="Tailwind CSS"></span>
+              <span class="toolkit-icon"><img src="assets/icons/python-programming-language-icon.svg" alt="Python"></span>
+            </div>
+
+            <div class="toolkit-side toolkit-side-right" aria-label="Known creative and AI tools">
+              <span class="toolkit-icon"><img src="assets/icons/adobe-photoshop-icon.svg" alt="Adobe Photoshop"></span>
+              <span class="toolkit-icon"><img src="assets/icons/adobe-substance-3d-painter-icon.svg" alt="Adobe Substance 3D Painter"></span>
+              <span class="toolkit-icon"><img src="assets/icons/blender-icon.svg" alt="Blender"></span>
+              <span class="toolkit-icon"><img src="assets/icons/openai-icon.svg" alt="OpenAI"></span>
+              <span class="toolkit-icon"><img src="assets/icons/claude-ai-icon.svg" alt="Claude AI"></span>
+              <span class="toolkit-icon"><img src="assets/icons/cursor-ai-code-icon.svg" alt="Cursor"></span>
+              <span class="toolkit-icon"><img src="assets/icons/github.svg" alt="GitHub"></span>
+            </div>
+
+            <div class="panel-links">
+              <a href="mailto:kenhuped@gmail.com">Email Ken</a>
+              <a href="https://github.com/Kenhugo-DT" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+
+            <!-- Moved Content: Music Player & Contact -->
+            <div class="music-player-container">
+              <div class="music-player">
+                <div class="music-player-header">
+                  <button id="play-pause" aria-label="Play or pause music"><span id="play-icon">Play</span><span id="pause-icon" style="display:none;">Pause</span></button>
+                  <span class="music-player-title">Ken's Theme Song</span>
+                </div>
+                  <audio id="audio-player" src="assets/audio/ThemeSong.mp3"></audio>
+                <div class="music-controls">
+                  <input type="range" id="seek-bar" value="0" min="0" max="100" step="1">
+                  <div class="music-time">
+                    <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                  </div>
+                  <label class="volume-control">Volume
+                    <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.7">
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <section class="funfacts-panel" aria-labelledby="funfacts-title">
+              <div class="funfacts-heading">
+                <span class="page-flag">side quests / fun facts</span>
+                <h3 id="funfacts-title">Fun facts</h3>
+              </div>
+              <ol class="funfact-list">
+                <li>Ken has beef with King Diamond. King Diamond doesn't know it. But it's very real.</li>
+                <li>He once made a fake real estate site for his teachers' homes. The accuracy was borderline unsettling.</li>
+                <li>He fears dragonflies more than deadlines. And he's met both in the wild.</li>
+                <li>Ken once built a vinyl shelf so emotionally charged, even the LED strips have commitment issues.</li>
+                <li>Photoshop? For Ken, it's less "image editing" and more "structured psychological release."</li>
+                <li>His CSS works beautifully until you open it in Firefox. Then it becomes interpretive art.</li>
+              </ol>
+            </section>
+
+            <button class="nav-flag flag-top" data-target="top" aria-label="Back to Home"><span>Back Home</span></button>
+          </div>
+        </section>
+      </div>
+
+      <!-- COLUMN 1: CREATIVITY -->
+      <div class="panel-column" data-x="1">
+        <section class="portfolio-panel panel-right" data-x="1" data-y="0" data-site="creativity" aria-labelledby="panel-creativity-title">
+          <div class="panel-inner panel-layout-creativity">
+            <div class="panel-main">
+              <header class="panel-page-header">
+                <span class="page-flag">creativity / creative projects</span>
+                <h2 id="panel-creativity-title" class="panel-page-title">Creative work & visual storytelling</h2>
+              </header>
+              <div class="panel-content">
+                <section class="showcase-area" aria-label="Selected project showcase">
+                  <div class="showcase-details">
+                    <h3 class="showcase-project-title">Photo editing &amp; branding</h3>
+                    <p class="showcase-project-subtitle">Creative visual direction and atmosphere</p>
+                  </div>
+                  <div class="showcase-links"></div>
+                </section>
+                <section class="project-description" aria-label="Project description">
+                  <div class="project-description-box">
+                    <h3 class="project-description-title">Project overview</h3>
+                    <p class="project-description-text">Select a project in the wheel to preview it here.</p>
+                  </div>
+                </section>
+              </div>
+            </div>
+            <aside class="panel-side project-wheel" aria-label="Creativity project wheel">
+              <div class="wheel-label">Projects</div>
+              <div class="wheel-items" data-wheel="creativity"></div>
+            </aside>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* ================================================================
+   CREATIVE SHOWCASE YOUTUBE EMBED
+   This is separate from the local MP3 player on the About panel.
+   ================================================================ */
+
+.showcase-details.has-youtube-showcase {
+  align-items: center;
+  justify-content: stretch;
+  padding: clamp(1rem, 1.45vw, 1.35rem);
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.showcase-details.has-youtube-showcase::after {
+  display: none;
+}
+
+.showcase-youtube-preview {
+  width: calc(100% - clamp(1.5rem, 3vw, 3rem));
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
+.showcase-youtube {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(244,239,228,0.12);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.38);
+  box-sizing: border-box;
+}
+
+.showcase-youtube iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.showcase-youtube-copy {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.showcase-youtube-copy .showcase-project-title,
+.showcase-youtube-copy .showcase-project-subtitle {
+  margin: 0;
+}
