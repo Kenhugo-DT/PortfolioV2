@@ -26,6 +26,14 @@ window.portfolioProjects = {
       subtitle: 'School project / property landing page',
       description: 'After learning vanilla JavaScript, I got tasked with "AI is the future of coding - do your best", at the same time I was also experimenting with building a crawler, so this site served the purpose of both "how far can I get with AI" and "where to test my crawler". ',
       links: [{ label: 'Live site', href: 'https://kenhugo-dt.github.io/testsite/' }, { label: 'GitHub', href: 'https://github.com/Kenhugo-DT/testsite' }]
+    },
+    {
+      id: 'mhm',
+      showcaseType: 'text',
+      title: 'MHM',
+      subtitle: 'Web app / structured project build',
+      description: 'A larger web project focused on turning an idea into a clearer app-like experience. MHM shows stronger project structure, interface thinking, and the move from simple pages into a more complete, maintainable build.',
+      links: [{ label: 'GitHub', href: 'https://github.com/Kenhugo-DT/MHM.git' }]
     }
   ],
   creativity: [

@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
       track.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
     }
     panels.forEach(p => p.classList.toggle('active', parseInt(p.dataset.x) === x && parseInt(p.dataset.y) === y));
-    if (targetPanel.classList.contains('panel-about')) {
+    if (targetPanel.classList.contains('panel-about') || window.matchMedia('(max-width: 760px)').matches) {
       window.requestAnimationFrame(() => targetPanel.scrollTo({ top: 0, behavior: 'auto' }));
     }
     updateNavigationMap(x, y, animate);
