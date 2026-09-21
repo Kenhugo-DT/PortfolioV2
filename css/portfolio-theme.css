@@ -49,7 +49,7 @@ body::before {
   mix-blend-mode: screen;
   pointer-events: none;
   z-index: 0;
-  animation: epic-drift 18s steps(8) infinite;
+  transform: translate3d(0.4rem, -0.2rem, 0);
 }
 
 body::after {
@@ -64,7 +64,7 @@ body::after {
   opacity: 0.72;
   pointer-events: none;
   z-index: 0;
-  animation: epic-orbit 26s linear infinite;
+  transform: rotate(8deg);
 }
 
 @keyframes epic-drift {
@@ -104,7 +104,8 @@ header#header h1::after {
   height: 2px;
   background: linear-gradient(90deg, var(--signal), transparent 36%, var(--plasma), transparent);
   transform-origin: left;
-  animation: signal-scan 3.8s ease-in-out infinite;
+  transform: scaleX(0.72);
+  opacity: 0.74;
 }
 
 @keyframes signal-scan {
@@ -223,7 +224,7 @@ header#header h1::after {
     0 22px 70px rgba(0,0,0,0.46),
     inset 0 1px 0 rgba(255,255,255,0.08),
     inset 0 -1px 0 rgba(0,0,0,0.75) !important;
-  backdrop-filter: blur(18px) saturate(1.2);
+  backdrop-filter: blur(8px) saturate(1.08);
 }
 
 .panel-content,
@@ -411,7 +412,7 @@ header#header h1::after {
   border-radius: 44% 56% 61% 39%;
   filter: blur(1px);
   opacity: 0.28;
-  animation: paint-turn 12s ease-in-out infinite;
+  transform: rotate(18deg) scale(1.04);
 }
 
 @keyframes paint-turn {
@@ -457,7 +458,7 @@ header#header h1::after {
 .showcase-links a:hover::before,
 .panel-links a:hover::before {
   opacity: 1;
-  animation: epic-orbit 2.4s linear infinite;
+  transform: rotate(22deg);
 }
 
 .funfact-list {

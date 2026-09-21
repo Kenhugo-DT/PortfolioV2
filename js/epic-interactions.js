@@ -31,26 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setActivePanel(document.querySelector('.portfolio-panel.active') || panels.find(panel => panel.dataset.site === 'home'));
 
-  let pointerFrame = 0;
-  let pendingPointer = null;
-
-  function updatePointerVars() {
-    pointerFrame = 0;
-    if (!pendingPointer) return;
-    root.style.setProperty('--pointer-x', pendingPointer.x.toFixed(3));
-    root.style.setProperty('--pointer-y', pendingPointer.y.toFixed(3));
-  }
-
-  if (motionAllowed && finePointer.matches) {
-    window.addEventListener('pointermove', event => {
-      pendingPointer = {
-        x: event.clientX / Math.max(window.innerWidth, 1),
-        y: event.clientY / Math.max(window.innerHeight, 1)
-      };
-      if (!pointerFrame) pointerFrame = window.requestAnimationFrame(updatePointerVars);
-    }, { passive: true });
-  }
-
   document.addEventListener('click', event => {
     const wheelItem = event.target.closest('.wheel-item');
     if (!wheelItem || !motionAllowed || !window.gsap) return;

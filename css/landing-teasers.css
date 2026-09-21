@@ -88,7 +88,7 @@
     0 22px 60px rgba(0,0,0,0.36),
     inset 0 1px 0 rgba(255,255,255,0.08);
   translate: var(--webdev-window-x) var(--webdev-window-y);
-  animation: dev-window-float 7.4s ease-in-out infinite;
+  transform: rotate(-1deg);
 }
 
 .dev-window::before {
@@ -125,7 +125,6 @@
   font-size: clamp(0.68rem, 0.9vw, 0.86rem);
   line-height: 1.2;
   text-shadow: 0 0 16px rgba(57,245,255,0.2);
-  animation: code-line-scan 4.8s ease-in-out infinite;
 }
 
 .dev-window code:nth-of-type(2) {
@@ -156,7 +155,7 @@
   background:
     radial-gradient(circle at 50% 0, rgba(57,245,255,0.18), transparent 70%),
     rgba(5,14,18,0.52);
-  animation: dev-tile-pulse 3.8s ease-in-out infinite;
+  opacity: 0.64;
 }
 
 .dev-grid span:nth-child(2n) {
@@ -176,7 +175,7 @@
   border: 1px dashed rgba(57,245,255,0.24);
   border-radius: 50%;
   translate: var(--webdev-orbit-x) var(--webdev-orbit-y);
-  animation: dev-orbit-turn 18s linear infinite;
+  transform: rotate(16deg);
 }
 
 .dev-orbit span {
@@ -192,7 +191,6 @@
   font-family: var(--font-mono);
   font-size: 0.7rem;
   box-shadow: 0 0 18px rgba(57,245,255,0.13);
-  animation: dev-orbit-counter 18s linear infinite;
 }
 
 .dev-orbit span:nth-child(1) { left: 50%; top: -1.2rem; transform: translateX(-50%); }
@@ -212,7 +210,7 @@
   opacity: 0.5;
   filter: blur(0.4px) saturate(1.3);
   translate: var(--creative-paint-x) var(--creative-paint-y);
-  animation: paint-orbit-morph 12s ease-in-out infinite;
+  transform: rotate(16deg) scale(1.03);
 }
 
 .paint-orbit span {
@@ -224,7 +222,6 @@
   mix-blend-mode: screen;
   opacity: 0.45;
   filter: blur(10px);
-  animation: paint-dot-drift 7s ease-in-out infinite;
 }
 
 .paint-orbit span:nth-child(1) { color: var(--mint); left: 12%; top: 18%; }
@@ -249,7 +246,6 @@
   transform-origin: right center;
   opacity: 0.9;
   filter: saturate(1.32) drop-shadow(0 0 12px rgba(124,255,201,0.2));
-  animation: brush-sweep 6.5s ease-in-out infinite;
 }
 
 .brush-strokes span::before,
@@ -327,7 +323,6 @@
     linear-gradient(135deg, rgba(124,255,201,0.08), rgba(255,47,179,0.025)),
     rgba(7,14,10,0.52);
   box-shadow: 0 18px 42px rgba(0,0,0,0.28), inset 0 0 24px rgba(124,255,201,0.045);
-  animation: frame-float 8s ease-in-out infinite;
 }
 
 .creative-frames span:nth-child(1) {
