@@ -9,8 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentY = 0;
 
   const contentMap = window.portfolioProjects;
+  const hydratedShowcases = new Set();
 
-  const currentProjectIndex = { webdev: 0, creativity: 0 };
+  const currentProjectIndex = {
+    webdev: Math.max(0, contentMap.webdev.findIndex(project => project.featured)),
+    creativity: Math.max(0, contentMap.creativity.findIndex(project => project.featured))
+  };
 
   function init() {
     renderWheel('webdev');
@@ -42,10 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
       track.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
     }
     panels.forEach(p => p.classList.toggle('active', parseInt(p.dataset.x) === x && parseInt(p.dataset.y) === y));
+    if (contentMap[targetPanel.dataset.site]) {
+      ensureShowcase(targetPanel.dataset.site, animate);
+    }
     if (targetPanel.classList.contains('panel-about') || window.matchMedia('(max-width: 760px)').matches) {
       window.requestAnimationFrame(() => targetPanel.scrollTo({ top: 0, behavior: 'auto' }));
     }
     updateNavigationMap(x, y, animate);
+  }
+
+  function isShowcaseReady(site) {
+    return hydratedShowcases.has(site) || panels.some(panel => panel.dataset.site === site && panel.classList.contains('active'));
+  }
+
+  function ensureShowcase(site, emitMotion = false) {
+    if (!contentMap[site]) return;
+    hydratedShowcases.add(site);
+    updateShowcase(site, emitMotion);
   }
 
   function initNavigationMap() {
@@ -272,9 +289,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderWheel(site) {
     const container = document.querySelector(`.wheel-items[data-wheel="${site}"]`);
-    if (!container) return;
-    container.innerHTML = `<div class="wheel-drum">` + contentMap[site].map((p, i) => `
-      <button class="wheel-item" data-index="${i}" aria-label="View project: ${p.title}">
+    const projects = contentMap[site] || [];
+    if (!container || !projects.length) return;
+    container.innerHTML = `<div class="wheel-drum">` + projects.map((p, i) => `
+      <button class="wheel-item${p.featured ? ' featured' : ''}" data-index="${i}" aria-label="View project: ${p.title}">
+        ${p.badge ? `<em class="wheel-item-badge">${p.badge}</em>` : ''}
         <strong>${p.title}</strong>
         <span>${p.subtitle}</span>
       </button>
@@ -347,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
       wheelPosition = activeIdx;
 
       renderWheelPosition(activeIdx, animate);
-      if (hasChanged || !animate) updateShowcase(site, hasChanged);
+      if (isShowcaseReady(site) && (hasChanged || !animate)) updateShowcase(site, hasChanged);
     }
 
     function snapToNearest() {
@@ -465,11 +484,11 @@ document.addEventListener('DOMContentLoaded', () => {
       details.classList.toggle('has-embed-showcase', project.showcaseType === 'embed');
       details.closest('.showcase-area')?.classList.toggle('has-gallery-project', project.showcaseType === 'gallery');
       if (project.showcaseType === 'youtube') {
-        details.innerHTML = `<div class="showcase-youtube-preview"><div class="showcase-youtube"><iframe src="https://www.youtube.com/embed/${project.videoId}" title="${project.title}" allowfullscreen></iframe></div><div class="showcase-youtube-copy"><h3 class="showcase-project-title">${project.title}</h3><p class="showcase-project-subtitle">${project.subtitle}</p></div></div>`;
+        details.innerHTML = `<div class="showcase-youtube-preview"><div class="showcase-youtube"><iframe src="https://www.youtube.com/embed/${project.videoId}" title="${project.title}" loading="lazy" allowfullscreen></iframe></div><div class="showcase-youtube-copy"><h3 class="showcase-project-title">${project.title}</h3><p class="showcase-project-subtitle">${project.subtitle}</p></div></div>`;
       } else if (project.showcaseType === 'gallery' && window.renderPortfolioGallery) {
         details.innerHTML = window.renderPortfolioGallery(project);
       } else if (project.showcaseType === 'image') {
-        details.innerHTML = `<div class="showcase-image-preview"><figure class="showcase-image-frame"><img src="${project.image}" alt="${project.title} screenshot"></figure><div class="showcase-image-copy"><h3 class="showcase-project-title">${project.title}</h3><p class="showcase-project-subtitle">${project.subtitle}</p></div></div>`;
+        details.innerHTML = `<div class="showcase-image-preview"><figure class="showcase-image-frame"><img src="${project.image}" alt="${project.title} screenshot" loading="lazy" decoding="async"></figure><div class="showcase-image-copy"><h3 class="showcase-project-title">${project.title}</h3><p class="showcase-project-subtitle">${project.subtitle}</p></div></div>`;
       } else if (project.showcaseType === 'embed') {
         details.innerHTML = `<div class="showcase-embed-preview"><div class="showcase-embed-frame"><iframe src="${project.embedUrl}" title="${project.title}" loading="lazy" allow="fullscreen; gamepad; pointer-lock"></iframe></div><div class="showcase-embed-copy"><h3 class="showcase-project-title">${project.title}</h3><p class="showcase-project-subtitle">${project.subtitle}</p></div></div>`;
       } else {

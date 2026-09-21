@@ -274,12 +274,18 @@ header#header h1 {
   position: relative;
   width: 100vw;
   height: calc(100dvh - var(--header-height));
+  content-visibility: auto;
+  contain-intrinsic-size: 100vw calc(100dvh - var(--header-height));
   display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--spacing-sm) clamp(0.75rem, 1.5vw, 1.5rem);
   box-sizing: border-box;
   flex-shrink: 0;
+}
+
+.portfolio-panel.active {
+  content-visibility: visible;
 }
 
 /* NAVIGATION FLAGS/TABS */

@@ -137,6 +137,13 @@ header#header h1::after {
   isolation: isolate;
 }
 
+.portfolio-panel:not(.active) .showcase-details::after,
+.portfolio-panel:not(.active) .landing-teaser,
+.portfolio-panel:not(.active) .landing-teaser *,
+.portfolio-panel:not(.active) .layout-map-node.active::after {
+  animation-play-state: paused !important;
+}
+
 .portfolio-panel::before,
 .portfolio-panel::after {
   content: '';

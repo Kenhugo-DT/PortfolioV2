@@ -12,7 +12,7 @@ window.portfolioProjects = {
     {
       id: 'guitar-website',
       showcaseType: 'image',
-      image: 'assets/images/projects/webdev/guitar-website-done.jpg',
+      image: 'assets/images/projects/webdev/guitar-website-done.webp',
       title: 'Guitar website',
       subtitle: 'Interactive landing page / music portfolio',
       description: 'After learning basic HTML and CSS, I got tasked with creating a website to "showcase my newfound skills", music/guitars have been my passion for 95% of my life so finding an interesting theme was easy!',
@@ -21,7 +21,7 @@ window.portfolioProjects = {
     {
       id: 'fictional-real-estate',
       showcaseType: 'image',
-      image: 'assets/images/projects/webdev/testsite.jpg',
+      image: 'assets/images/projects/webdev/testsite.webp',
       title: 'Fictional real estate site',
       subtitle: 'School project / property landing page',
       description: 'After learning vanilla JavaScript, I got tasked with "AI is the future of coding - do your best", at the same time I was also experimenting with building a crawler, so this site served the purpose of both "how far can I get with AI" and "where to test my crawler". ',
@@ -29,7 +29,10 @@ window.portfolioProjects = {
     },
     {
       id: 'mhm',
-      showcaseType: 'text',
+      showcaseType: 'image',
+      image: 'assets/images/projects/webdev/mhm-screenshot.webp',
+      featured: true,
+      badge: 'New',
       title: 'MHM',
       subtitle: 'Web app / structured project build',
       description: 'A larger web project focused on turning an idea into a clearer app-like experience. MHM shows stronger project structure, interface thinking, and the move from simple pages into a more complete, maintainable build.',

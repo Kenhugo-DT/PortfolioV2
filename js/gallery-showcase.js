@@ -56,7 +56,7 @@
     overlay.setAttribute('aria-modal', 'true');
     overlay.setAttribute('aria-label', `${root.dataset.galleryTitle || 'Gallery'} image`);
     overlay.innerHTML = `
-      <img src="${escapeText(image.src)}" alt="${escapeText(image.description || root.dataset.galleryTitle || 'Gallery image')}" data-gallery-lightbox-close>
+      <img src="${escapeText(image.src)}" alt="${escapeText(image.description || root.dataset.galleryTitle || 'Gallery image')}" decoding="async" data-gallery-lightbox-close>
       <div class="portfolio-gallery-fullcaption">${escapeText(image.description || '')}</div>
     `;
 
@@ -81,14 +81,14 @@
     const firstImage = images[0];
     const thumbnails = images.map((image, index) => `
       <button class="portfolio-gallery-thumb ${index === 0 ? 'is-active' : ''}" type="button" data-gallery-index="${index}" aria-label="Show image ${index + 1}">
-        <img src="${escapeText(image.src)}" alt="">
+        <img src="${escapeText(image.src)}" alt="" loading="lazy" decoding="async">
       </button>
     `).join('');
 
     return `
       <div class="portfolio-gallery" data-gallery-id="${escapeText(galleryId)}" data-current-index="0" data-gallery-title="${escapeText(project.title)}">
         <div class="portfolio-gallery-main" data-gallery-open role="button" tabindex="0" aria-label="Open image gallery">
-          <img src="${escapeText(firstImage.src)}" alt="${escapeText(firstImage.description || project.title)}" data-gallery-main>
+          <img src="${escapeText(firstImage.src)}" alt="${escapeText(firstImage.description || project.title)}" loading="lazy" decoding="async" data-gallery-main>
           ${images.length > 1 ? `
             <button class="portfolio-gallery-nav portfolio-gallery-prev" type="button" data-gallery-step="-1" aria-label="Previous image">&lsaquo;</button>
             <button class="portfolio-gallery-nav portfolio-gallery-next" type="button" data-gallery-step="1" aria-label="Next image">&rsaquo;</button>

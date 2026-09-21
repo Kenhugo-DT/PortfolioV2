@@ -3,15 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.body;
   const panels = Array.from(document.querySelectorAll('.portfolio-panel'));
   const motionAllowed = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   body.classList.add('epic-ready');
 
   function pulseClass(element, className, duration = 700) {
     if (!element) return;
     element.classList.remove(className);
-    void element.offsetWidth;
-    element.classList.add(className);
-    window.setTimeout(() => element.classList.remove(className), duration);
+    window.requestAnimationFrame(() => {
+      element.classList.add(className);
+      window.setTimeout(() => element.classList.remove(className), duration);
+    });
   }
 
   function setActivePanel(panel) {
@@ -29,12 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setActivePanel(document.querySelector('.portfolio-panel.active') || panels.find(panel => panel.dataset.site === 'home'));
 
-  window.addEventListener('pointermove', event => {
-    const x = event.clientX / Math.max(window.innerWidth, 1);
-    const y = event.clientY / Math.max(window.innerHeight, 1);
-    root.style.setProperty('--pointer-x', x.toFixed(3));
-    root.style.setProperty('--pointer-y', y.toFixed(3));
-  }, { passive: true });
+  let pointerFrame = 0;
+  let pendingPointer = null;
+
+  function updatePointerVars() {
+    pointerFrame = 0;
+    if (!pendingPointer) return;
+    root.style.setProperty('--pointer-x', pendingPointer.x.toFixed(3));
+    root.style.setProperty('--pointer-y', pendingPointer.y.toFixed(3));
+  }
+
+  if (motionAllowed && finePointer.matches) {
+    window.addEventListener('pointermove', event => {
+      pendingPointer = {
+        x: event.clientX / Math.max(window.innerWidth, 1),
+        y: event.clientY / Math.max(window.innerHeight, 1)
+      };
+      if (!pointerFrame) pointerFrame = window.requestAnimationFrame(updatePointerVars);
+    }, { passive: true });
+  }
 
   document.addEventListener('click', event => {
     const wheelItem = event.target.closest('.wheel-item');
@@ -117,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateLandingTeasers() {
     teaserFrame = 0;
-    if (!homePanel || !motionAllowed) return;
+    if (!homePanel || !motionAllowed || !homePanel.classList.contains('active')) return;
 
     const webdev = focusedTeaser === 'webdev' ? 1 : getFlagProximity(landingFlags.webdev, lastPointer);
     const creative = focusedTeaser === 'creative' ? 1 : getFlagProximity(landingFlags.creative, lastPointer);
@@ -136,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (homePanel) {
     window.addEventListener('pointermove', event => {
+      if (!motionAllowed || !finePointer.matches || !homePanel.classList.contains('active')) return;
       lastPointer = { x: event.clientX, y: event.clientY };
       requestTeaserUpdate();
     }, { passive: true });

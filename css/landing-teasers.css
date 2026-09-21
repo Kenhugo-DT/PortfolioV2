@@ -67,6 +67,11 @@
   filter: grayscale(0.35) blur(0.5px);
 }
 
+.panel-center:not([data-teaser]) .landing-teaser,
+.panel-center:not([data-teaser]) .landing-teaser * {
+  animation-play-state: paused;
+}
+
 .dev-window {
   position: absolute;
   left: 0;
